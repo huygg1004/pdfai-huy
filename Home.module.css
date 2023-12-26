@@ -20,3 +20,31 @@
     }
   }
   
+  /* Home.module.css */
+.buttonHoverEffect {
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttonHoverEffect:hover {
+  background-color: #667eea; /* or any color you prefer */
+  transform: scale(1.05); /* slightly enlarges the button */
+}
+
+/* Home.module.css */
+.uploadBox {
+  border: 2px dashed #cbd5e1; /* Default border color */
+  border-radius: 1rem;
+  cursor: pointer;
+  background-color: #f9fafb; /* Default background color */
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: background-color 0.3s, border-color 0.3s; /* Smooth transition */
+}
+
+.uploadBox:hover {
+  background-color: #eff6ff; /* Lighter blue on hover */
+  border-color: #93c5fd; /* Lighter border color on hover */
+}

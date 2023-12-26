@@ -43,7 +43,7 @@ export default async function Home() {
             {isAuth && firstChat && (
               <>
                 <Link href={`/chat/${firstChat.id}`}>
-                  <Button>
+                  <Button className={`${styles.buttonHoverEffect}`}>
                     Go to Conversations <ArrowRight className="ml-2" />
                   </Button>
                 </Link>
@@ -59,7 +59,7 @@ export default async function Home() {
               <FileUpload />
             ) : (
               <Link href="/sign-in">
-                <Button>
+                <Button className={`${styles.buttonHoverEffect}`}>
                   Login to get Started!
                   <LogIn className="w-4 h-4 ml-2" />
                 </Button>
@@ -73,7 +73,7 @@ export default async function Home() {
       </div>
 
       <div className="text-white absolute bottom-4 left-4">
-            Developed by Huy D
+            Developed and Designed by Huy Doan
       </div>
       <div className="text-white absolute bottom-4 right-4">
             Powered by GPT3.5
