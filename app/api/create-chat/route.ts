@@ -17,9 +17,6 @@ export async function POST(req: Request, res: Response) {
         console.log(file_key, file_name);
         await loadS3IntoPinecone(file_key);
         console.log("Inserting into Neon DB..............")
-        console.log(userId)
-        console.log(db)
-        console.log(getS3Url(file_key))
         
         const chat_id = await db.insert(chats).values({
             fileKey: file_key,

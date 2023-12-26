@@ -43,10 +43,25 @@ export async function loadS3IntoPinecone(fileKey: string) {
   // 4. upload to pinecone
   const client = await getPineconeClient();
   const pineconeIndex = await client.index("pdfai-huy");
-  const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+  console.log("Name space: " + convertToAscii(fileKey))
+  console.log("File name: " + file_name)
 
-  console.log("inserting vectors into pinecone");
-  await namespace.upsert(vectors);
+  try {
+    const namespace = pineconeIndex.namespace(convertToAscii(fileKey));
+    console.log("inserting vectors into pinecone");    
+    await namespace.upsert(vectors);
+    console.log("Vectors inserted successfully.");
+  } catch (error) {
+    console.error("An error occurred when inserting vectors into Pinecone:", error);
+    // Handle the error by creating an abbreviation from the file name
+    const fileName = fileKey.split('/').pop(); // Extract the file name
+    const abbreviation = fileName.replace(/[^a-zA-Z]/g, ''); // Remove numbers and special characters
+    console.log("Using abbreviation as namespace:", abbreviation);
+    console.log(abbreviation)
+    const namespace = pineconeIndex.namespace(convertToAscii(abbreviation));
+    await namespace.upsert(vectors);
+  }
+
 
   console.log("It seems vectors are inserted successfully")
   return documents[0];
