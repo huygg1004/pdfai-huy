@@ -46,7 +46,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
   console.log("Name space: " + convertToAscii(fileKey))
   console.log("File name: " + file_name)
 
-  const fileName = fileKey.split('/').pop(); // Extract the file name
+  const fileName = fileKey.split('/').pop() || 'defaultFileName'; // Extract the file name
   const abbreviation = fileName.replace(/[^a-zA-Z]/g, ''); // Remove numbers and special characters
   const namespace = pineconeIndex.namespace(convertToAscii(abbreviation));
   await namespace.upsert(vectors);
