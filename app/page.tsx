@@ -72,9 +72,9 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="text-white absolute bottom-4 left-4">
+      {/* <div className="text-white absolute bottom-4 left-4">
             Developed and Designed by Huy Doan
-      </div>
+      </div> */}
       <div className="text-white absolute bottom-4 right-4">
             Powered by GPT3.5
       </div>
