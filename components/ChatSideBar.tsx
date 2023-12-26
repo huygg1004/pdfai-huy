@@ -3,26 +3,32 @@ import { DrizzleChat } from "@/lib/db/schema";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
-import { MessageCircle, PlusCircle } from "lucide-react";
+import { ArrowRight, MessageCircle, PlusCircle, Home } from "lucide-react";
 import { cn } from "@/lib/utils";
 import axios from "axios";
+import SubscriptionButton from "./SubscriptionButton";
 
 type Props = {
   chats: DrizzleChat[];
   chatId: number;
+  isPro: boolean;
 };
 
-const ChatSideBar = ({ chats, chatId }: Props) => {
-    const [loading, setLoading] = React.useState(false);
+
+const ChatSideBar = ({ chats, chatId, isPro }: Props) => {
+  const [loading, setLoading] = React.useState(false);
+
   
     return (
       <div className="flex flex-col h-full text-gray-200 bg-gradient-to-r from-blue-700 via-blue-800 to-gray-900">
-        <Link href="/">
-            <Button className="w-full bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r">
-            <PlusCircle className="mr-2 w-4 h-4" />
-            <h1 className="text-lg font-bold">New Chat</h1>
-            </Button>
-        </Link>
+      <Link href="/">
+        <div className="w-full bg-gradient-to-b from-gray-900 to-gray-600 bg-gradient-to-r p-2 rounded-lg">
+          <div className="flex items-center gap-2 text-sm text-white flex-wrap">
+            <Home className="w-6 h-6" /> {/* Adjust the size of the Home icon */}
+            <h1 className="text-lg font-bold pl-2">Home   </h1> {/* Add left padding to the text */}
+          </div>
+        </div>
+      </Link>
   
         <div className="flex max-h-screen pb-20 flex-col mt-1 overflow-y-auto">
           {chats.map((chat) => (
@@ -42,6 +48,7 @@ const ChatSideBar = ({ chats, chatId }: Props) => {
           ))}
         </div>
       </div>
+      
     );
   };
 export default ChatSideBar;
