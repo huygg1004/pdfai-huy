@@ -13,7 +13,7 @@ export async function getMatchesFromEmbeddings(
     });
     const pineconeIndex = await client.index("pdfai-huy");
 
-    const fileName = fileKey.split('/').pop(); // Extract the file name
+    const fileName = fileKey.split('/').pop() || 'defaultFileName';
     const abbreviation = fileName.replace(/[^a-zA-Z]/g, ''); // Remove numbers and special characters
     const namespace = pineconeIndex.namespace(convertToAscii(abbreviation));
 
