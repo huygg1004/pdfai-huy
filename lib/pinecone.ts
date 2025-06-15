@@ -11,7 +11,6 @@ import { convertToAscii } from "./utils";
 
 export const getPineconeClient = () => {
   return new Pinecone({
-    environment: process.env.PINECONE_ENVIRONMENT!,
     apiKey: process.env.PINECONE_API_KEY!,
   });
 };
@@ -42,7 +41,7 @@ export async function loadS3IntoPinecone(fileKey: string) {
 
   // 4. upload to pinecone
   const client = await getPineconeClient();
-  const pineconeIndex = await client.index("pdfai-huy");
+  const pineconeIndex = await client.index("test-2");
   console.log("Name space: " + convertToAscii(fileKey))
   console.log("File name: " + file_name)
 

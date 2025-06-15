@@ -11,7 +11,7 @@ export async function uploadToS3(file: File) {
             params: {
                 Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME!
             },
-            region: 'eu-north-1'
+            region: 'ap-southeast-2'
         })
 
         const file_key =
